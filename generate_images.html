@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Images</title>
+</head>
+<body>
+    <canvas id="logo" width="200" height="100"></canvas>
+    <canvas id="placeholder" width="400" height="300"></canvas>
+    <script>
+        // Generate logo
+        const logoCanvas = document.getElementById('logo');
+        const logoCtx = logoCanvas.getContext('2d');
+        logoCtx.fillStyle = '#2c3e50';
+        logoCtx.fillRect(0, 0, 200, 100);
+        logoCtx.fillStyle = 'white';
+        logoCtx.font = '24px Arial';
+        logoCtx.textAlign = 'center';
+        logoCtx.fillText('EasyTech', 100, 50);
+        
+        // Generate placeholder
+        const placeholderCanvas = document.getElementById('placeholder');
+        const placeholderCtx = placeholderCanvas.getContext('2d');
+        placeholderCtx.fillStyle = '#3498db';
+        placeholderCtx.fillRect(0, 0, 400, 300);
+        placeholderCtx.fillStyle = 'white';
+        placeholderCtx.font = '24px Arial';
+        placeholderCtx.textAlign = 'center';
+        placeholderCtx.fillText('Service Image', 200, 150);
+        
+        // Save images
+        const logoData = logoCanvas.toDataURL('image/png').replace(/^data:image\/png;base64,/, '');
+        const placeholderData = placeholderCanvas.toDataURL('image/jpeg').replace(/^data:image\/jpeg;base64,/, '');
+        
+        // Create download links
+        const logoLink = document.createElement('a');
+        logoLink.href = 'data:application/octet-stream;base64,' + logoData;
+        logoLink.download = 'logo.png';
+        logoLink.click();
+        
+        const placeholderLink = document.createElement('a');
+        placeholderLink.href = 'data:application/octet-stream;base64,' + placeholderData;
+        placeholderLink.download = 'placeholder.jpg';
+        placeholderLink.click();
+    </script>
+</body>
+</html> 
